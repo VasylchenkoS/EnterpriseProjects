@@ -1,0 +1,73 @@
+<project name="ant-module1" basedir=".">
+
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <property name="src.main" location="src\main"/>
+    <property name="src.test" location="src\test"/>
+
+    <property name="tests" location="tests"/>
+    <property name="tests.build" location="tests/build"/>
+    <property name="tests.report" location="tests/report"/>
+
+    <property name="lib" location="lib"/>
+
+    <path id="test.classpath">
+        <pathelement location="${lib}/testng-6.9.10.jar"/>
+        <pathelement location="${lib}/jcommander-1.48.jar"/>
+        <pathelement location="${lib}/bsh-2.0b4.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${tests.build}"/>
+        <mkdir dir="${tests.report}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.main}" destdir="${build}" source="1.8" target="1.8" includeantruntime="false"/>
+    </target>
+
+    <target name="dist" depends="test">
+        <jar destfile="${dist}/AntModule1.jar">
+            <fileset dir="${build}"/>
+            <manifest>
+                <attribute name="Main-Class" value="com.vasylchenko.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <taskdef name="testng" classname="org.testng.TestNGAntTask">
+        <classpath>
+            <path refid="test.classpath"/>
+        </classpath>
+    </taskdef>
+
+    <target name="compile.test" depends="compile">
+        <javac srcdir="${src.test}" destdir="${tests.build}" source="1.8" target="1.8" includeantruntime="false">
+            <classpath>
+                <pathelement location="${build}"/>
+                <path refid="test.classpath"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="compile.test">
+        <testng outputDir="${tests.report}">
+            <classpath>
+                <pathelement location="${tests.build}"/>
+                <pathelement location="${build}"/>
+                <path refid="test.classpath"/>
+            </classpath>
+            <xmlfileset dir="${src.test}" includes="testng.xml"/>
+        </testng>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+        <delete dir="${tests}"/>
+    </target>
+
+</project>

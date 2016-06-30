@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="7" passed="7">
+  <reporter-output>
+  </reporter-output>
+  <suite name="com.vasylchenko.beans.CollectionsCompareBeansTest" duration-ms="52" started-at="2016-06-30T20:32:31Z" finished-at="2016-06-30T20:32:31Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="52" started-at="2016-06-30T20:32:31Z" finished-at="2016-06-30T20:32:31Z">
+      <class name="com.vasylchenko.beans.CollectionsCompareBeansTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="10" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testCompareCollectionAdd()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareCollectionAdd" duration-ms="8" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareCollectionAdd -->
+        <test-method status="PASS" signature="testCompareCollectionContains()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareCollectionContains" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareCollectionContains -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testCompareCollectionPopulate()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareCollectionPopulate" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareCollectionPopulate -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testCompareCollectionRemove()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareCollectionRemove" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareCollectionRemove -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="1" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testCompareListGet()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareListGet" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareListGet -->
+        <test-method status="PASS" signature="testCompareListIteratorAdd()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareListIteratorAdd" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareListIteratorAdd -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="setUp" is-config="true" duration-ms="0" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testCompareListIteratorRemove()[pri:0, instance:com.vasylchenko.beans.CollectionsCompareBeansTest@28f67ac7]" name="testCompareListIteratorRemove" duration-ms="1" started-at="2016-06-30T23:32:31Z" finished-at="2016-06-30T23:32:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCompareListIteratorRemove -->
+      </class> <!-- com.vasylchenko.beans.CollectionsCompareBeansTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- com.vasylchenko.beans.CollectionsCompareBeansTest -->
+</testng-results>

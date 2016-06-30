@@ -1,0 +1,70 @@
+<project name="ant-example" basedir=".">
+
+    <property name="src" location="src/main"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <property name="test.src" location="src/test"/>
+    <property name="tests" location="tests"/>
+    <property name="tests.build" location="tests/build"/>
+    <property name="tests.report" location="tests/report"/>
+
+    <property name="lib" location="lib"/>
+
+    <path id="test.classpath">
+        <pathelement location="${lib}/junit-4.12.jar"/>
+        <pathelement location="${lib}/hamcrest-core-1.3.jar"/>
+        <pathelement location="${build}"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${tests.build}"/>
+        <mkdir dir="${tests.report}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${build}" source="1.8" target="1.8" includeantruntime="false"/>
+    </target>
+
+    <target name="compile.test" depends="compile">
+        <javac srcdir="${test.src}" destdir="${tests.build}" source="1.8" target="1.8" includeantruntime="false">
+            <classpath>
+                <!--<pathelement location="${build}"/>-->
+                <path refid="test.classpath"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="junit" depends="compile.test">
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <path refid="test.classpath"/>
+                <pathelement location="${tests.build}"/>
+            </classpath>
+            <formatter type="plain"/>
+            <batchtest fork="yes" todir="${tests.report}">
+                <fileset dir="${test.src}">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="dist" depends="junit">
+        <jar destfile="${dist}/AntExample.jar">
+            <fileset dir="${build}"/>
+            <manifest>
+                <attribute name="Main-Class" value="com.vasylchenko.Bootstrap"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+        <delete dir="${tests}"/>
+    </target>
+
+</project>

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestAll">
+    <test name="CollectionRunningTest">
+        <classes>
+            <class name="com.vasylchenko.java.sources.SemaphoreImplTest"/>
+            <class name="com.vasylchenko.java.sources.SquareSumTest"/>
+        </classes>
+    </test>
+</suite>
