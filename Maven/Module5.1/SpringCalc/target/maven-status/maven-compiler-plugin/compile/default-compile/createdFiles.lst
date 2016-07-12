@@ -1,0 +1,4 @@
+com\vasylchenko\Bootstrap.class
+com\vasylchenko\beans\NewSimpleCalcDouble.class
+com\vasylchenko\beans\OperationsDouble.class
+com\vasylchenko\config\AppConfig.class
