@@ -1,12 +1,14 @@
 package com.vasylchenko.beans;
 
 import com.vasilchenko.sources.Calculator;
+import com.vasylchenko.annotation.Loggable;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class Console {
 
+    @Loggable
     public void readData(Calculator calculator) {
         System.out.println("[INFO:] Hi you! I`m a test calculator." +
                 "\nI know only few operators, among them: +,-,*,/\n" +

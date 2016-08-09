@@ -1,6 +1,7 @@
 package com.vasylchenko;
 
 import com.vasilchenko.sources.Calculator;
+import com.vasylchenko.annotation.Loggable;
 import com.vasylchenko.beans.Console;
 
 public class Bootstrap {
@@ -11,6 +12,11 @@ public class Bootstrap {
         this.calculator = calculator;
     }
 
+    public Calculator getCalculator() {
+        return calculator;
+    }
+
+    @Loggable
     public void run() {
         new Console().readData(calculator);
     }

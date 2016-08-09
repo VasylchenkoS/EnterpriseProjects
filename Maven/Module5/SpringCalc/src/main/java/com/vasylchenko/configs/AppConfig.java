@@ -8,20 +8,13 @@ import com.vasilchenko.sources.ExpressionParser;
 import com.vasylchenko.Bootstrap;
 import com.vasylchenko.beans.operations.Dividing;
 import com.vasylchenko.beans.operations.Multiplying;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableAspectJAutoProxy
-@ComponentScan(basePackages = "com.vasylchenko.beans.*")
 public class AppConfig {
 
-//    @Bean
-//    public LoggingAspect loggingAspect(){
-//        return new LoggingAspect();
-//    }
-
-
-    @Bean(initMethod = "run")
+    @Bean
     public Bootstrap bootstrap(Calculator calculator) {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.setCalculator(calculator);
@@ -29,7 +22,6 @@ public class AppConfig {
     }
 
     @Bean
-    @Scope("prototype")
     public Calculator calculator(OperationProvider operationProvider, Parser parser) {
         Calculator calculator = new Calculator();
         calculator.setOperationList(operationProvider.getAllOperations());
@@ -37,8 +29,9 @@ public class AppConfig {
         return calculator;
     }
 
-    @Bean(initMethod = "init")
+    @Bean
     public OperationProvider initProvider(OperationProvider operationProvider) {
+        operationProvider.init();
         operationProvider.initAdditionalOperation(new Dividing());
         operationProvider.initAdditionalOperation(new Multiplying());
         return operationProvider;

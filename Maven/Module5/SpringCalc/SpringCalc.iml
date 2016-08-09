@@ -5,6 +5,7 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/com/vasylchenko/configs/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/vasylchenko/configs/LoggingAspect.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -38,8 +39,5 @@
     <orderEntry type="library" name="Maven: org.junit:junit-engine-api:5.0.0-ALPHA" level="project" />
     <orderEntry type="library" name="Maven: org.junit:junit-commons:5.0.0-ALPHA" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0-ALPHA" level="project" />
-    <orderEntry type="library" name="Maven: org.testng:testng:6.9.10" level="project" />
-    <orderEntry type="library" name="Maven: com.beust:jcommander:1.48" level="project" />
-    <orderEntry type="library" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
   </component>
 </module>
