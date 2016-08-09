@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 
 public class Dividing implements Operation {
+
     @Override
     public BigDecimal count(BigDecimal value1, BigDecimal value2) {
         if (value2.intValue() == 0)

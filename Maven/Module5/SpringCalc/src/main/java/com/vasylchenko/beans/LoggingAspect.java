@@ -1,4 +1,4 @@
-package com.vasylchenko.configs;
+package com.vasylchenko.beans;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,12 +9,13 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(* *(..)) && @annotation(com.vasylchenko.annotation.Loggable)")
-    public Object test(ProceedingJoinPoint point) throws Throwable {
+    @Before(value = "execution(* Console.readData(String)) && @annotation(com.vasylchenko.annotation.Loggable)")
+//    @Around("execution( * com.vasylchenko.beans.Console.readData(..))")
+    public void test(ProceedingJoinPoint point) {
         String methodName = point.getSignature().getName();
-        Object result = point.proceed();
-        System.out.println(methodName);
-        return result;
+//        Object result = point.proceed();
+        System.out.println("-----------------" + methodName);
+//        return result;
     }
 }
 

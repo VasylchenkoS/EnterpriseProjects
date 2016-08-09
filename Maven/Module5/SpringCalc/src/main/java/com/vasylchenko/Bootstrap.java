@@ -1,14 +1,12 @@
 package com.vasylchenko;
 
 import com.vasilchenko.sources.Calculator;
-import com.vasylchenko.annotation.Loggable;
 import com.vasylchenko.beans.Console;
 
 public class Bootstrap {
 
     private Calculator calculator;
 
-    @Loggable
     public void setCalculator(Calculator calculator) {
         this.calculator = calculator;
     }

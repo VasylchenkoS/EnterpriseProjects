@@ -12,8 +12,13 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackageClasses = LoggingAspect.class)
+@ComponentScan(basePackages = "com.vasylchenko.beans.*")
 public class AppConfig {
+
+//    @Bean
+//    public LoggingAspect loggingAspect(){
+//        return new LoggingAspect();
+//    }
 
 
     @Bean(initMethod = "run")
@@ -48,5 +53,4 @@ public class AppConfig {
     public Parser parser() {
         return new ExpressionParser();
     }
-
 }
