@@ -1,0 +1,8 @@
+com\vasilchenko\operations\Adding.class
+com\vasilchenko\sources\BaseOperationProvider.class
+com\vasilchenko\interfaces\Operation.class
+com\vasilchenko\interfaces\OperationProvider.class
+com\vasilchenko\sources\Calculator.class
+com\vasilchenko\interfaces\Parser.class
+com\vasilchenko\operations\Subtraction.class
+com\vasilchenko\sources\ExpressionParser.class
