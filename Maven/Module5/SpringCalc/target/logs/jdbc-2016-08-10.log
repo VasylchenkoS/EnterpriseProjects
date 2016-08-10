@@ -1,0 +1,15 @@
+10:36:11.591 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method init[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:11.602 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method initAdditionalOperation[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:11.603 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method initAdditionalOperation[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:11.682 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method getAllOperations[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:11.859 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method run. Class: org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$MethodSignatureImpl
+10:36:15.198 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method expressionParser[interface com.vasylchenko.calclibrary.interfaces.Parser] start working
+10:36:15.202 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method getOperator[interface com.vasylchenko.calclibrary.interfaces.Parser] start working
+10:36:15.203 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method getOperands[interface com.vasylchenko.calclibrary.interfaces.Parser] start working
+10:36:15.203 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method getOperands[interface com.vasylchenko.calclibrary.interfaces.Parser] start working
+10:36:44.926 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method init[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:44.936 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method initAdditionalOperation[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:44.937 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method initAdditionalOperation[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:45.023 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method getAllOperations[interface com.vasylchenko.calclibrary.interfaces.OperationProvider] start working
+10:36:45.253 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method run. Class: org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$MethodSignatureImpl
+10:36:55.142 [main] INFO  c.vasylchenko.configs.LoggingAspect - Method run: works 9889s
