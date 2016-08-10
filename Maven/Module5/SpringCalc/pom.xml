@@ -97,17 +97,23 @@
         <!-- LOGGING -->
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>1.7.21</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.mcpat.slf4j</groupId>
+            <artifactId>slf4cldc-api</artifactId>
+            <version>1.6.0</version>
         </dependency>
 
         <!-- MY LIB -->
 
         <dependency>
-            <groupId>com.vasylchenko</groupId>
+            <groupId>com.vasylchenko.calclibrary</groupId>
             <artifactId>calc-library</artifactId>
-            <version>2.0</version>
+            <version>2.0-RELEASE</version>
         </dependency>
 
         <!-- TESTING -->

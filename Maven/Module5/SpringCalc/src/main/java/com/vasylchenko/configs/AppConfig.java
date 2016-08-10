@@ -1,10 +1,10 @@
 package com.vasylchenko.configs;
 
-import com.vasilchenko.interfaces.OperationProvider;
-import com.vasilchenko.interfaces.Parser;
-import com.vasilchenko.sources.BaseOperationProvider;
-import com.vasilchenko.sources.Calculator;
-import com.vasilchenko.sources.ExpressionParser;
+import com.vasylchenko.calclibrary.interfaces.OperationProvider;
+import com.vasylchenko.calclibrary.interfaces.Parser;
+import com.vasylchenko.calclibrary.sources.BaseOperationProvider;
+import com.vasylchenko.calclibrary.sources.Calculator;
+import com.vasylchenko.calclibrary.sources.ExpressionParser;
 import com.vasylchenko.Bootstrap;
 import com.vasylchenko.beans.operations.Dividing;
 import com.vasylchenko.beans.operations.Multiplying;

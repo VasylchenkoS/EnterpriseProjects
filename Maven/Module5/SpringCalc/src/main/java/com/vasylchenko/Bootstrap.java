@@ -1,6 +1,6 @@
 package com.vasylchenko;
 
-import com.vasilchenko.sources.Calculator;
+import com.vasylchenko.calclibrary.sources.Calculator;
 import com.vasylchenko.annotation.Loggable;
 import com.vasylchenko.beans.Console;
 

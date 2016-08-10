@@ -1,8 +1,8 @@
-com\vasylchenko\beans\operations\Multiplying.class
-com\vasylchenko\Bootstrap.class
-com\vasylchenko\configs\AppConfig.class
-com\vasylchenko\Runner.class
-com\vasylchenko\annotation\Loggable.class
-com\vasylchenko\configs\LoggingAspect.class
 com\vasylchenko\beans\Console.class
+com\vasylchenko\annotation\Loggable.class
 com\vasylchenko\beans\operations\Dividing.class
+com\vasylchenko\beans\operations\Multiplying.class
+com\vasylchenko\Runner.class
+com\vasylchenko\Bootstrap.class
+com\vasylchenko\configs\LoggingAspect.class
+com\vasylchenko\configs\AppConfig.class

@@ -1,6 +1,6 @@
 package com.vasylchenko.beans.operations;
 
-import com.vasilchenko.interfaces.Operation;
+import com.vasylchenko.calclibrary.interfaces.Operation;
 
 import java.math.BigDecimal;
 

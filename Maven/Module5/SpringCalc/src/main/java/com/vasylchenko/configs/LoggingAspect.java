@@ -56,4 +56,15 @@ public class LoggingAspect {
                 + arguments + "\nand the full toString: " + stuff + "\nthe exception is: "
                 + e.getMessage(), e);
     }
+
+    @Pointcut("execution(* com.vasylchenko.calclibrary.interfaces.Parser.*(..)) || " +
+            "execution(* com.vasylchenko.calclibrary.interfaces.Operation.*(..)) || " +
+            "execution(* com.vasylchenko.calclibrary.interfaces.OperationProvider.*(..))")
+    public void calcLibrary() {
+    }
+
+    @Before("calcLibrary()")
+    public void calcLibraryLogs(JoinPoint point) {
+        LOGGER.info("Method " + point.getSignature().getName() + "[" + point.getSignature().getDeclaringType() + "] start working");
+    }
 }

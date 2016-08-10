@@ -1,8 +1,8 @@
-com\vasilchenko\operations\Adding.class
-com\vasilchenko\sources\BaseOperationProvider.class
-com\vasilchenko\interfaces\Operation.class
-com\vasilchenko\interfaces\OperationProvider.class
-com\vasilchenko\sources\Calculator.class
-com\vasilchenko\interfaces\Parser.class
-com\vasilchenko\operations\Subtraction.class
-com\vasilchenko\sources\ExpressionParser.class
+com\vasylchenko\calclibrary\sources\BaseOperationProvider.class
+com\vasylchenko\calclibrary\operations\Adding.class
+com\vasylchenko\calclibrary\sources\ExpressionParser.class
+com\vasylchenko\calclibrary\interfaces\Parser.class
+com\vasylchenko\calclibrary\interfaces\Operation.class
+com\vasylchenko\calclibrary\operations\Subtraction.class
+com\vasylchenko\calclibrary\interfaces\OperationProvider.class
+com\vasylchenko\calclibrary\sources\Calculator.class
