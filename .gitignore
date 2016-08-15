@@ -50,3 +50,5 @@ Temporary Items
 .out/
 Maven/TestProj/
 *.jar
+*.png
+Maven/homework 6.txt

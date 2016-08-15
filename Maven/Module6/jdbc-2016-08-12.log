@@ -1,0 +1,4 @@
+01:01:12.243 [main] INFO  com.vasylchenko.Runner - Loading JDBC driver: org.postgresql.Driver
+01:01:12.254 [main] INFO  com.vasylchenko.Runner - Driver loaded successfully
+01:01:12.254 [main] INFO  com.vasylchenko.Runner - Connecting to DB
+01:01:12.358 [main] INFO  com.vasylchenko.Runner - Successfully connected to DB
