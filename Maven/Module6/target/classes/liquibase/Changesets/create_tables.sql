@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset v.vasylchenko:release
+--changeset v.vasylchenko:create_tables runOnChange:true failOnError:true
 
 CREATE TABLE Storage(
   ID_Ingridient       SERIAL PRIMARY KEY     NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Category(
 
 CREATE TABLE Dish(
   ID_Dish          SERIAL PRIMARY KEY     NOT NULL,
-  Name  VARCHAR(50) NOT NULL,
+  Name  VARCHAR(50) NOT NULL UNIQUE,
   ID_Category INT,
   Price DOUBLE PRECISION,
   Weigth REAL
@@ -27,7 +27,7 @@ CREATE TABLE DishIngredients(
 );
 
 CREATE TABLE Menu(
-  ID_Menu          SERIAL PRIMARY KEY     NOT NULL,
+  ID_Menu          SERIAL PRIMARY KEY     NOT NULL ,
   Name VARCHAR(50) NOT NULL UNIQUE
 );
 
@@ -54,14 +54,25 @@ CREATE TABLE Employee(
 
 CREATE TABLE TableSit(
   ID_Table          SERIAL PRIMARY KEY     NOT NULL,
-  Number INT NOT NULL UNIQUE
+  Number VARCHAR(10) NOT NULL UNIQUE
 );
 
 CREATE TABLE Ordering(
   ID_Order          SERIAL PRIMARY KEY     NOT NULL,
   ID_Employee INT NOT NULL,
   ID_Table INT,
-  Date DATE NOT NULL
+  Date DATE NOT NULL,
+  ID_State int not null DEFAULT(1)
+);
+
+CREATE TABLE OrderState(
+  ID_State          SERIAL PRIMARY KEY     NOT NULL,
+  State VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE kitchenDishState(
+  ID_State          SERIAL PRIMARY KEY     NOT NULL,
+  State VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE OrderDish(
@@ -73,9 +84,10 @@ CREATE TABLE OrderDish(
 CREATE TABLE Kitchen(
   ID_Kitchen          SERIAL PRIMARY KEY     NOT NULL,
   ID_Employee INT NOT NULL,
-  ID_Dish INT ,
   ID_Order INT,
-  Date DATE NOT NULL
+  Date DATE NOT NULL,
+  ID_DishState INT NOT NULL DEFAULT 1,
+  id_dish int
 );
 
---rollback release
+ALTER TABLE Kitchen ADD COLUMN id_dish INT

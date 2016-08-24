@@ -1,41 +1,25 @@
 package com.vasylchenko;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.sql.*;
+import com.vasylchenko.gui.SpringFXMLLoader;
+import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Runner {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Runner.class);
-    private String url = "jdbc:postgresql://localhost:5432/restaurant";
-    private String user = "user";
-    private String password = "123";
 
-    private static void loadDriver() {
-        try {
-            LOGGER.info("Loading JDBC driver: org.postgresql.Driver");
-            Class.forName("org.postgresql.Driver");
-            LOGGER.info("Driver loaded successfully");
-        } catch (ClassNotFoundException e) {
-            LOGGER.error("Cannot find driver: org.postgresql.Driver");
-            throw new RuntimeException(e);
-        }
-    }
+public class Runner extends Application{
 
-    public void getAll() {
-        LOGGER.info("Connecting to DB");
-        try (Connection connection = DriverManager.getConnection(url, user, password);
-             Statement statement = connection.createStatement()) {
-            LOGGER.info("Successfully connected to DB");
-//            String sql = "SELECT * FROM *";
-//            ResultSet resultSet = statement.executeQuery(sql);
-        } catch (SQLException e) {
-            LOGGER.error("Exception occurred while connecting to DB. URL: " + url);
-            throw new RuntimeException(e);
-        }
-    }
+    private static final SpringFXMLLoader loader = new SpringFXMLLoader();
 
     public static void main(String[] args) {
-        loadDriver();
-        new Runner().getAll();
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = (Parent) loader.load("/gui/RestraintDataScene.fxml");
+        Scene scene = new Scene(root,700,500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

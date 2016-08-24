@@ -6,15 +6,18 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <!--include file="src/main/resources/liquibase/changesets/clear_table.sql"/-->
-    <!--include file="src/main/resources/liquibase/changesets/create_tables.sql" /-->
-    <!--include file="src/main/resources/liquibase/changesets/alter_tables.sql" />
-    <include file="src/main/resources/liquibase/changesets/add_indexes.sql" /-->
-
-    <include file="src/main/resources/liquibase/changesets/test.sql" />
-
-    <changeSet author="v.vasylchenko" id="tag_test">
-        <tagDatabase tag="version_0.1.0" />
+    <include file="src/main/resources/liquibase/changesets/create_tables.sql" />
+    <include file="src/main/resources/liquibase/changesets/alter_tables.sql" />
+    <include file="src/main/resources/liquibase/changesets/add_data_stage1.sql" />
+    <changeSet author="v.vasylchenko" id="function" dbms="plpgsql,h2">
+        <sqlFile encoding="utf8"
+                 path="src/main/resources/liquibase/changesets/functions.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"
+        />
     </changeSet>
+    <include file="src/main/resources/liquibase/changesets/add_data_stage2.sql" />
 
 </databaseChangeLog>

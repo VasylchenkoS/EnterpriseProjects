@@ -27,7 +27,7 @@ CREATE TABLE DishIngredients(
 );
 
 CREATE TABLE Menu(
-  ID_Menu          SERIAL PRIMARY KEY     NOT NULL,
+  ID_Menu          SERIAL PRIMARY KEY     NOT NULL ,
   Name VARCHAR(50) NOT NULL UNIQUE
 );
 
@@ -61,7 +61,18 @@ CREATE TABLE Ordering(
   ID_Order          SERIAL PRIMARY KEY     NOT NULL,
   ID_Employee INT NOT NULL,
   ID_Table INT,
-  Date DATE NOT NULL
+  Date DATE NOT NULL,
+  ID_State int not null DEFAULT(1)
+);
+
+CREATE TABLE OrderState(
+  ID_State          SERIAL PRIMARY KEY     NOT NULL,
+  State VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE kitchenDishState(
+  ID_State          SERIAL PRIMARY KEY     NOT NULL,
+  State VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE OrderDish(
@@ -75,10 +86,8 @@ CREATE TABLE Kitchen(
   ID_Employee INT NOT NULL,
   ID_Order INT,
   Date DATE NOT NULL,
-  ID_Status INT NOT NULL
+  ID_DishState INT NOT NULL DEFAULT 1,
+  id_dish int
 );
 
-CREATE TABLE DishStatus(
-  ID_DishStatus SERIAL PRIMARY KEY     NOT NULL,
-  DishStatus VARCHAR(10) NOT NULL UNIQUE
-);
+ALTER TABLE Kitchen ADD COLUMN id_dish INT
