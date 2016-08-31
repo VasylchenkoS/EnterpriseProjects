@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+    <bean id="runner" class="com.vasylchenko.Runner"/>
+    <bean id="restraintDataSceneController" class="com.vasylchenko.gui.controller.RestraintDataSceneController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HCategoryDAO" id="categoryDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.CategoryController" id="categoryController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HDishDAO" id="dishDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.DishController" id="dishController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HPositionDAO" id="positionDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.PositionController" id="positionController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HEmployeeDAO" id="employeeDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.EmployeeController" id="employeeController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HStorageDAO" id="storageDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.StorageController" id="storageController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HMenuDAO" id="menuDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.MenuController" id="menuController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HOrderStateDAO" id="orderStateDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.OrderStateController" id="orderStateController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HOrderingDAO" id="orderingDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.OrderingController" id="orderingController"/>
+    <bean class="com.vasylchenko.jdbc.hibernate.HTablesDAO" id="tablesDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.TablesController" id="tablesController"/>
+
+    <bean class="com.vasylchenko.jdbc.hibernate.HKitchenDishStateDAO" id="kitchenDishStateDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.KitchenDishStateController" id="kitchenDishStateController"/>
+    <bean class="com.vasylchenko.jdbc.hibernate.HKitchenDAO" id="kitchenDAO"/>
+    <bean class="com.vasylchenko.jdbc.components.KitchenController" id="kitchenController"/>
+
+</beans>
