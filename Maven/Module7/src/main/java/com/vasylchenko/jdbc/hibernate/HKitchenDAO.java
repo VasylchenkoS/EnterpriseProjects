@@ -49,38 +49,39 @@ public class HKitchenDAO implements KitchenDAO {
     @Override
     public void addAllDishFromOrder(Ordering order) {
         Session session = sessionFactory.getCurrentSession();
-        Kitchen kitchen = new Kitchen(
-                null, order, kitchenDishStateController.getKitchenDishStateByName("Open"),
-                null, null);
-        order.getDishList().forEach(dish -> {
-            final int[] result = new int[1];
-            session.doWork(connection -> {
-                try (CallableStatement function = connection
-                        .prepareCall("{ ? = call choose_cook() }")) {
-                    function.registerOutParameter(1, Types.INTEGER);
-                    result[0] = function.getInt(1);
-                }});
+//        Kitchen kitchen = new Kitchen(
+//                null, order, ,
+//                null, null);
+        for (Dish dish : order.getDishList()) {
+            Kitchen kitchen = new Kitchen();
             Query query = session.createQuery(
                     "select e from Employee e where e.id = :id");
-            query.setParameter("id", result[0]);
+            query.setParameter("id", getCookId());
             kitchen.setCook((Employee) query.uniqueResult());
-            kitchen.setDishName(dish);
+            kitchen.setOrder(order);
+            kitchen.setStatus(kitchenDishStateController.getKitchenDishStateByName("Cooking"));
             kitchen.setDate(new Date(new java.util.Date().getTime()));
+            kitchen.setDishName(dish);
             sessionFactory.getCurrentSession().save(kitchen);
-        });
+        }
+    }
+
+    private int getCookId() {
+        final int[] result = new int[1];
+        sessionFactory.getCurrentSession().doWork(connection -> {
+            try (CallableStatement function = connection
+                    .prepareCall("{ ? = call choose_cook() }")) {
+                function.registerOutParameter(1, Types.INTEGER);
+                function.execute();
+                result[0] = function.getInt(1);
+            }});
+        return result[0];
     }
 
     @Override
-    public void setDishReady(Ordering order, Dish dish) {
+    public void setDishReady(Kitchen kitchen) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select k from Kitchen k where " +
-                "k.dishName = :dish and k.order = :cur_order " +
-                "and k.status=" +
-                "(select ks from KitchenDishState ks where ks.state='Cooking')");
-        query.setParameter("dish", dish);
-        query.setParameter("cur_order", order);
-        Kitchen kitchen = (Kitchen) query.uniqueResult();
         kitchen.setStatus(kitchenDishStateController.getKitchenDishStateByName("Ready"));
-        session.save(kitchen);
+        session.update(kitchen);
     }
 }

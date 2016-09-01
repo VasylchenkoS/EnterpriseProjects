@@ -5,6 +5,10 @@ import java.sql.Date;
 public class DateUtil {
 
     public static Date parseString(String date){
-        return Date.valueOf(date);
+        try {
+            return Date.valueOf(date);
+        }catch (IllegalArgumentException e){
+            throw new RuntimeException("Wrong input data");
+        }
     }
 }

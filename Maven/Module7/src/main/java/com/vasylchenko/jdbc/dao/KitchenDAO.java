@@ -1,6 +1,5 @@
 package com.vasylchenko.jdbc.dao;
 
-import com.vasylchenko.jdbc.model.Dish;
 import com.vasylchenko.jdbc.model.Kitchen;
 import com.vasylchenko.jdbc.model.Ordering;
 
@@ -14,5 +13,5 @@ public interface KitchenDAO {
 
     void addAllDishFromOrder(Ordering order);
 
-    void setDishReady(Ordering order, Dish dish);
+    void setDishReady(Kitchen kitchen);
 }

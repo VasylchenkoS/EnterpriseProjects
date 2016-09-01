@@ -27,8 +27,8 @@ public class StorageController {
         storageDAO.deleteIngredientById(ingredientId);
     }
 
-    public void changeIngredientCount(Storage ingredient) {
-        storageDAO.changeIngredientCount(ingredient);
+    public void changeIngredientCount(Storage ingredient, long count) {
+        storageDAO.changeIngredientCount(ingredient, count);
     }
 
     public Storage getIngredientByName(String ingredientName) {

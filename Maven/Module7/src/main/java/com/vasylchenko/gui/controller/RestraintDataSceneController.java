@@ -122,15 +122,45 @@ public class RestraintDataSceneController implements Initializable {
 
     @FXML
     void kitchenAddNewDishButtonPress(ActionEvent event) {
-        List<String> list = new LinkedList<>();
-        ChoiceDialog<Ordering> dialog = new ChoiceDialog<>();
+        Dialog<Ordering> dialog = new Dialog<>();
         dialog.setTitle("Choice Dialog");
-        dialog.setContentText("Choose order:");
+        dialog.setHeaderText("Select Order");
+
+        ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        ObservableList<Ordering> data =
+                FXCollections.observableArrayList(orderingController.showOpenOrder());
+
+        ComboBox<Ordering> name = new ComboBox<>(data);
+        name.setCellFactory(call -> new ListCell<Ordering>(){
+            @Override
+            protected void updateItem(Ordering t, boolean bln) {
+                super.updateItem(t, bln);
+                if (t != null) setText(String.valueOf(t.getId()));
+                else setText(null);
+            }
+        });
+        grid.add(new Label("Order ID:"), 0, 0);
+        grid.add(name, 0, 1);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == addButtonType) {
+                return name.getSelectionModel().getSelectedItem();
+            }
+            return null;
+        });
 
         Optional<Ordering> result = dialog.showAndWait();
-
         result.ifPresent(letter -> kitchenController.addAllDishFromOrder(result.get()));
+
         showKitchen(kitchenController.getAllCookingDish());
+        showAllStorageIngredients();
     }
 
     @FXML
@@ -152,8 +182,7 @@ public class RestraintDataSceneController implements Initializable {
             alert.showAndWait();
         } else {
             kitchenController.setDishReady(
-                    kitchenTable.getSelectionModel().getSelectedItem().getOrder(),
-                    kitchenTable.getSelectionModel().getSelectedItem().getDishName());
+                    kitchenTable.getSelectionModel().getSelectedItem());
             showKitchen(kitchenController.getAllReadyDish());
         }
     }
@@ -491,15 +520,18 @@ public class RestraintDataSceneController implements Initializable {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
-        List<String> ingredientNames = new ArrayList<>();
-        storageController.getAllIngredient().forEach(storage ->
-        ingredientNames.add(storage.getIngredientName()));
-        ObservableList<String> data =
-                FXCollections.observableArrayList(ingredientNames);
+        ObservableList<Storage> data =
+                FXCollections.observableArrayList(storageController.getAllIngredient());
 
-        ChoiceBox<String> name = new ChoiceBox<String>();
-        name.setItems(data);
-
+        ComboBox<Storage> name = new ComboBox<>(data);
+        name.setCellFactory(call -> new ListCell<Storage>(){
+                    @Override
+                    protected void updateItem(Storage t, boolean bln) {
+                        super.updateItem(t, bln);
+                        if (t != null) setText(t.getIngredientName());
+                        else setText(null);
+                    }
+                });
         TextField quantity = new TextField();
         quantity.setPromptText("Quantity");
 
@@ -517,13 +549,13 @@ public class RestraintDataSceneController implements Initializable {
         dialog.getDialogPane().setContent(grid);
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == addButtonType) {
-                return new Storage(name.getSelectionModel().selectedItemProperty().getValue(), Long.valueOf(quantity.getText()));
+                return name.getSelectionModel().getSelectedItem();
             }
             return null;
         });
         Optional<Storage> result = dialog.showAndWait();
         if (result.isPresent()){
-            storageController.changeIngredientCount(result.get());
+            storageController.changeIngredientCount(result.get(), Long.valueOf(quantity.getText()));
         }
         showAllStorageIngredients();
     }
@@ -626,6 +658,15 @@ public class RestraintDataSceneController implements Initializable {
         }
     }
 
+    private static final class DishListCell extends ListCell<Dish> {
+        @Override
+        protected void updateItem(Dish t, boolean bln) {
+            super.updateItem(t, bln);
+            if (t != null) setText(t.getName());
+            else setText(null);
+        }
+    }
+
     private void createDialogForMenu(Dialog<List<Dish>> dialog, ObservableList<Dish> data) {
         dialog.setTitle("New Dish in Menu Dialog");
         dialog.setHeaderText("Chose Dish in Menu for adding(5 max in 1 request)");
@@ -637,16 +678,16 @@ public class RestraintDataSceneController implements Initializable {
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
-        ChoiceBox<Dish> dish1 = new ChoiceBox<Dish>();
-        dish1.setItems(data);
-        ChoiceBox<Dish> dish2 = new ChoiceBox<Dish>();
-        dish2.setItems(data);
-        ChoiceBox<Dish> dish3 = new ChoiceBox<Dish>();
-        dish3.setItems(data);
-        ChoiceBox<Dish> dish4 = new ChoiceBox<Dish>();
-        dish4.setItems(data);
-        ChoiceBox<Dish> dish5 = new ChoiceBox<Dish>();
-        dish5.setItems(data);
+        ComboBox<Dish> dish1 = new ComboBox<Dish>(data);
+        dish1.setCellFactory(call -> new DishListCell());
+        ComboBox<Dish> dish2 = new ComboBox<Dish>(data);
+        dish2.setCellFactory(call -> new DishListCell());
+        ComboBox<Dish> dish3 = new ComboBox<Dish>(data);
+        dish3.setCellFactory(call -> new DishListCell());
+        ComboBox<Dish> dish4 = new ComboBox<Dish>(data);
+        dish4.setCellFactory(call -> new DishListCell());
+        ComboBox<Dish> dish5 = new ComboBox<Dish>(data);
+        dish5.setCellFactory(call -> new DishListCell());
 
         grid.add(new Label("Dish №1:"), 0, 0);
         grid.add(dish1, 1, 0);
@@ -824,8 +865,8 @@ public class RestraintDataSceneController implements Initializable {
         dialog.getDialogPane().setContent(grid);
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == addButtonType) {
-                Category dishCategory = new Category();
-                dishCategory.setCategory(category.getSelectionModel().selectedItemProperty().getValue().toString());
+                Category dishCategory = categoryController.getCategoryByName(
+                        category.getSelectionModel().getSelectedItem());
                 return new Dish(name.getText(), dishCategory,
                 Double.parseDouble(price.getText()), Double.parseDouble(weight.getText()));
             }

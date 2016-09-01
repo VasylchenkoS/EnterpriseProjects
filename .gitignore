@@ -52,3 +52,4 @@ Maven/TestProj/
 *.jar
 *.png
 Maven/homework 6.txt
+.target/*

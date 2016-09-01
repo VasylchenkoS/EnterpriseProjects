@@ -1,7 +1,6 @@
 package com.vasylchenko.jdbc.components;
 
 import com.vasylchenko.jdbc.dao.KitchenDAO;
-import com.vasylchenko.jdbc.model.Dish;
 import com.vasylchenko.jdbc.model.Kitchen;
 import com.vasylchenko.jdbc.model.Ordering;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +28,7 @@ public class KitchenController {
         kitchenDAO.addAllDishFromOrder(order);
     }
 
-    public void setDishReady(Ordering order, Dish dish) {
-            kitchenDAO.setDishReady(order, dish);
+    public void setDishReady(Kitchen kitchen) {
+            kitchenDAO.setDishReady(kitchen);
     }
 }

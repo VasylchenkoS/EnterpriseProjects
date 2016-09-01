@@ -12,7 +12,7 @@ public interface StorageDAO {
 
     void deleteIngredientById(int Id);
 
-    void changeIngredientCount(Storage ingredient);
+    void changeIngredientCount(Storage ingredient, long count);
 
     Storage getIngredientByName(String ingredientName);
 

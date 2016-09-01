@@ -35,7 +35,8 @@ public class HStorageDAO implements StorageDAO {
     }
 
     @Override
-    public void changeIngredientCount(Storage ingredient) {
+    public void changeIngredientCount(Storage ingredient, long count) {
+        ingredient.setQuantity(count);
         sessionFactory.getCurrentSession().update(ingredient);
     }
 

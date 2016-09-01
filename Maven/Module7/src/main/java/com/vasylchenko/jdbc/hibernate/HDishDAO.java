@@ -34,6 +34,7 @@ public class HDishDAO implements DishDAO {
     @Override
     public void addNewDish(Dish dish) {
         sessionFactory.getCurrentSession().save(dish);
+
     }
 
     @Override
