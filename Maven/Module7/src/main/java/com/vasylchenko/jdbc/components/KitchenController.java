@@ -2,6 +2,7 @@ package com.vasylchenko.jdbc.components;
 
 import com.vasylchenko.jdbc.dao.KitchenDAO;
 import com.vasylchenko.jdbc.model.Kitchen;
+import com.vasylchenko.jdbc.model.KitchenHistory;
 import com.vasylchenko.jdbc.model.Ordering;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,7 @@ public class KitchenController {
         this.kitchenDAO = kitchenDAO;
     }
 
-    public List<Kitchen> getAllReadyDish() {
+    public List<KitchenHistory> getAllReadyDish() {
         return kitchenDAO.getAllReadyDish();
     }
 
@@ -31,4 +32,5 @@ public class KitchenController {
     public void setDishReady(Kitchen kitchen) {
             kitchenDAO.setDishReady(kitchen);
     }
+
 }

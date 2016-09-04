@@ -38,4 +38,7 @@
     <bean class="com.vasylchenko.jdbc.hibernate.HKitchenDAO" id="kitchenDAO"/>
     <bean class="com.vasylchenko.jdbc.components.KitchenController" id="kitchenController"/>
 
+    <bean class="com.vasylchenko.jdbc.components.KitchenHistoryController" id="kitchenHistoryController"/>
+    <bean class="com.vasylchenko.jdbc.hibernate.HKitchenHistoryDAO" id="kitchenHistoryDAO"/>
+
 </beans>

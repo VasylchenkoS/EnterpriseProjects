@@ -40,20 +40,4 @@ public class Position {
                 ", position='" + position + '\'' +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Position)) return false;
-
-        Position position = (Position) o;
-
-        return position != null ? position.equals(position.position) : position.position == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        return position != null ? position.hashCode() : 0;
-    }
 }

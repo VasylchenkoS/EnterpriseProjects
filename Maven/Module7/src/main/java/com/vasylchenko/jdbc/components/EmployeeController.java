@@ -1,7 +1,8 @@
 package com.vasylchenko.jdbc.components;
 
-import com.vasylchenko.jdbc.model.Employee;
 import com.vasylchenko.jdbc.dao.EmployeeDAO;
+import com.vasylchenko.jdbc.model.Cook;
+import com.vasylchenko.jdbc.model.Employee;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -31,4 +32,7 @@ public class EmployeeController {
          employeeDAO.deleteEmployeeById(Id);
     }
 
+    public List<Cook> getAllCooks() {
+        return employeeDAO.getAllCooks();
+    }
 }

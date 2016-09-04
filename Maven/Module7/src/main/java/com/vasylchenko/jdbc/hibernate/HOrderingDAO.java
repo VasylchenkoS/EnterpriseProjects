@@ -28,7 +28,7 @@ public class HOrderingDAO implements OrderingDAO {
 
     @Override
     public void addDishesInOrder(Ordering order, List<Dish> dishList) {
-        if (order.getOrderState().equals(orderStateController.getStateByName("Close"))) {
+        if (order.getOrderState().getState().equals("Open")) {
             order.setDishList(dishList);
             sessionFactory.getCurrentSession().update(order);
         } else {
@@ -38,7 +38,7 @@ public class HOrderingDAO implements OrderingDAO {
 
     @Override
     public void removeDishesFromOrder(Ordering order, List<Dish> dishList) {
-        if (order.getOrderState().equals(orderStateController.getStateByName("Close"))) {
+        if (order.getOrderState().getState().equals("Open")) {
             dishList.forEach(dish -> {
                 order.getDishList().contains(dish);
                 order.getDishList().remove(dish);
@@ -51,8 +51,9 @@ public class HOrderingDAO implements OrderingDAO {
 
     @Override
     public void deleteOrder(Ordering order) {
-        if (order.getOrderState().equals(orderStateController.getStateByName("Close")))
+        if (order.getOrderState().getState().equals("Open")) {
             sessionFactory.getCurrentSession().delete(order);
+        }
         else {
             throw new RuntimeException("You can't delete Closed Order");
         }

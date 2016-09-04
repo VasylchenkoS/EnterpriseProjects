@@ -1,6 +1,7 @@
 package com.vasylchenko.jdbc.model;
 
 
+import org.hibernate.annotations.DiscriminatorOptions;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "employee")
+@DiscriminatorOptions(force = true)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Employee {
 
     @Id

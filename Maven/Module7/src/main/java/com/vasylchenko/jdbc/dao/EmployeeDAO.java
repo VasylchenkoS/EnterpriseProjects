@@ -1,5 +1,6 @@
 package com.vasylchenko.jdbc.dao;
 
+import com.vasylchenko.jdbc.model.Cook;
 import com.vasylchenko.jdbc.model.Employee;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface EmployeeDAO {
     void addNewEmployee(Employee employee);
 
     void deleteEmployeeById(int Id);
+
+    List<Cook> getAllCooks();
 }

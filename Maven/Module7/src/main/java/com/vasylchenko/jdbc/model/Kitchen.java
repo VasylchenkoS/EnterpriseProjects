@@ -1,5 +1,6 @@
 package com.vasylchenko.jdbc.model;
 
+import org.hibernate.annotations.DiscriminatorOptions;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -7,6 +8,8 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "kitchen")
+@DiscriminatorOptions(force = true)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Kitchen {
 
     @Id
@@ -15,22 +18,22 @@ public class Kitchen {
     @Column(name = "id_kitchen")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_employee")
     private Employee cook;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_order")
     private Ordering order;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_dish")
     private Dish dishName;
 
     @Column(name = "date")
     private Date date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_dishstate")
     private KitchenDishState status;
 

@@ -16,7 +16,7 @@ public class Ordering {
     @Column(name = "id_order")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_employee")
     private Employee employee;
 

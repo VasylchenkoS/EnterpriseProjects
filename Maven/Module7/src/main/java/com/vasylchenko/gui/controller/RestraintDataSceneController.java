@@ -103,22 +103,22 @@ public class RestraintDataSceneController implements Initializable {
     private TableView<Kitchen> kitchenTable;
 
     @FXML
-    private TableColumn<Kitchen, ?> kitchenId;
+    private TableColumn<? extends Kitchen, ?> kitchenId;
 
     @FXML
-    private TableColumn<Kitchen, String> kitchenCookName;
+    private TableColumn<? extends Kitchen, String> kitchenCookName;
 
     @FXML
-    private TableColumn<Kitchen, String> kitchenOrderNumber;
+    private TableColumn<? extends Kitchen, String> kitchenOrderNumber;
 
     @FXML
-    private TableColumn<Kitchen, ?> kitchenDate;
+    private TableColumn<? extends Kitchen, ?> kitchenDate;
 
     @FXML
-    private TableColumn<Kitchen, String> kitchenDishState;
+    private TableColumn<? extends Kitchen, String> kitchenDishState;
 
     @FXML
-    private TableColumn<Kitchen, String> kitchenDishName;
+    private TableColumn<? extends Kitchen, String> kitchenDishName;
 
     @FXML
     void kitchenAddNewDishButtonPress(ActionEvent event) {
@@ -148,13 +148,33 @@ public class RestraintDataSceneController implements Initializable {
         grid.add(new Label("Order ID:"), 0, 0);
         grid.add(name, 0, 1);
 
-        dialog.getDialogPane().setContent(grid);
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == addButtonType) {
-                return name.getSelectionModel().getSelectedItem();
+        ObservableList<Cook> dataEmployee =
+                FXCollections.observableArrayList(employeeController.getAllCooks());
+
+
+        ComboBox<Cook> employeeName = new ComboBox<>(dataEmployee);
+        employeeName.setCellFactory(call -> new ListCell<Cook>(){
+            @Override
+            protected void updateItem(Cook t, boolean bln) {
+                super.updateItem(t, bln);
+                if (t != null) setText(String.valueOf(t.getSurname() + t.getName()));
+                else setText(null);
             }
-            return null;
         });
+        grid.add(new Label("Cook Name:"), 1, 0);
+        grid.add(employeeName, 1, 1);
+
+        dialog.getDialogPane().setContent(grid);
+//        Ordering ordering;
+//        Cook employee;
+//        dialog.setResultConverter(dialogButton -> {
+//            if (dialogButton == addButtonType) {
+//                ordering = name.getSelectionModel().getSelectedItem();
+//
+//                return employeeName.getSelectionModel().getSelectedItem();
+//            }
+//            return null;
+//        });
 
         Optional<Ordering> result = dialog.showAndWait();
         result.ifPresent(letter -> kitchenController.addAllDishFromOrder(result.get()));
@@ -191,7 +211,7 @@ public class RestraintDataSceneController implements Initializable {
         showKitchen(kitchenController.getAllCookingDish());
     }
 
-    private void showKitchen(List<Kitchen> kitchenList) {
+    private void showKitchen(List<? extends Kitchen> kitchenList) {
         ObservableList<Kitchen> data = FXCollections.observableArrayList(kitchenList);
         kitchenId.setCellValueFactory(new PropertyValueFactory<>("id"));
         kitchenCookName.setCellValueFactory(
@@ -389,7 +409,7 @@ public class RestraintDataSceneController implements Initializable {
         orderIDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         orderNameColumn.setCellValueFactory(
                 param -> new SimpleStringProperty(param.getValue().getEmployee().getSurname() + " " +
-                        param.getValue().getEmployee().getSurname()));
+                        param.getValue().getEmployee().getName()));
         orderTableNumColumn.setCellValueFactory(
                 param -> new SimpleStringProperty(param.getValue().getTable().getNumber()));
         orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
